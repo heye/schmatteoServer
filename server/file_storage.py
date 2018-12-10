@@ -29,6 +29,7 @@ def write_file(data: str) -> bool:
     
     return result
 
+
 def append_file(data: str) -> bool:
     result = False
 
