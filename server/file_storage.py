@@ -1,5 +1,4 @@
 
-from pymongo import MongoClient
 from typing import Dict, Tuple, List
 import os
 import traceback
