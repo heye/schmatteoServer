@@ -53,5 +53,5 @@ if __name__ == '__main__':
     ctx.load_cert_chain(
         certfile=certPath,
         keyfile=keyPath
-    )   
+    )    
     app.run(host=hostAddr, port=4431, ssl=ctx, workers=4)
