@@ -54,4 +54,4 @@ if __name__ == '__main__':
         certfile=certPath,
         keyfile=keyPath
     )   
-    app.run(host=hostAddr, port=443, ssl=ctx, workers=4)
+    app.run(host=hostAddr, port=4431, ssl=ctx, workers=4)
