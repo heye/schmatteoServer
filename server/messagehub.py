@@ -8,6 +8,9 @@ class cache:
     ret = ""
     names = []
 
+    rage_ret = ""
+    rage_names = []
+
 def setup():
     file_storage.setup()
     cache.ret = file_storage.read_file()
@@ -42,12 +45,30 @@ def handleAdd(name: str) -> str:
 
         file_storage.write_file(cache.ret)
         return "added"
-    
+    return "already_exists"
+
+
+def handleAddRage(name: str) -> str:
+
+    if name not in cache.rage_names:
+        cache.rage_names.append(name)        
+        cache.rage_ret += name + '\n'
+        return "added"
 
     return "already_exists"
+
+
+def handleGetRage() -> str:
+    temp = cache.rage_ret
+    cache.rage_ret = ""
+    cache.rage_names = []
+    return temp
+
 
 def handleClear() -> str:
     cache.ret = ""
     cache.names = []
+    cache.rage_ret = ""
+    cache.rage_names = []
     file_storage.write_file("")
     return "cleared"

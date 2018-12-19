@@ -21,6 +21,14 @@ async def handle_request(request):
 async def handle_request(request, name):
     return response.text(messagehub.handleAdd(name))
 
+@app.route('/rage/add/<name>', methods=['GET'])
+async def handle_request(request, name):
+    return response.text(messagehub.handleAddRage(name))
+
+@app.route('/rage/get/', methods=['GET'])
+async def handle_request(request):
+    return response.text(messagehub.handleGetRage())
+
 @app.route('/clear/123', methods=['GET'])
 async def handle_request(request):
     return response.text(messagehub.handleClear())
