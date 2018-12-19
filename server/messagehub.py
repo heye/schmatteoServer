@@ -29,7 +29,18 @@ def handleAdd(name: str) -> str:
     if name not in cache.names:
         cache.names.append(name)        
         cache.ret += name + '\n'
-        file_storage.append_file(name + '\n')
+        if len(cache.names) > 80:
+            cache.names.pop(0)
+            
+            fist_line_length = 0
+            for c in cache.ret:
+                fist_line_length  = fist_line_length + 1
+                if c == '\n':
+                    break
+            cache.ret = cache.ret[fist_line_length:]
+            print("FIRST LINE LEN " + str(fist_line_length))
+
+        file_storage.write_file(cache.ret)
         return "added"
     
 
