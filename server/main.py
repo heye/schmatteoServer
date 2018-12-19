@@ -29,6 +29,22 @@ async def handle_request(request, name):
 async def handle_request(request):
     return response.text(messagehub.handleGetRage())
 
+@app.route('/nuzzle/add/<name>', methods=['GET'])
+async def handle_request(request, name):
+    return response.text(messagehub.handleAddNuzzle(name))
+
+@app.route('/nuzzle/get/', methods=['GET'])
+async def handle_request(request):
+    return response.text(messagehub.handleGetNuzzle())
+
+@app.route('/animals/set/', methods=['POST'])
+async def handle_request(request):
+    return response.text(messagehub.handleSetAnimals(str(request.body, "utf-8")))
+
+@app.route('/animals/get/', methods=['GET'])
+async def handle_request(request):
+    return response.text(messagehub.handleGetAnimals())
+
 @app.route('/clear/123', methods=['GET'])
 async def handle_request(request):
     return response.text(messagehub.handleClear())
