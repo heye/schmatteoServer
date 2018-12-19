@@ -48,16 +48,13 @@ def handleAdd(name: str) -> str:
                 if c == '\n':
                     break
             cache.ret = cache.ret[fist_line_length:]
-            print("FIRST LINE LEN " + str(fist_line_length))
 
         file_storage.write_file(cache.ret)
         return "added"
 
     else:
-        print(cache.names)
         cache.names.remove(name)
         cache.names.append(name)
-        print(cache.names)
 
         #double buffer, so the returned list is always full
         new_ret = ""
@@ -103,14 +100,10 @@ def handleGetNuzzle() -> str:
 
 
 def handleSetAnimals(animals: str) -> str:
-    #print(animals)
     for one_name in animals.splitlines():
         if one_name not in cache.animal_names:
             cache.animal_names.append(one_name)
     
-    print("ANIMALS")
-    print(cache.animal_names)
-
     return "set"
 
 
