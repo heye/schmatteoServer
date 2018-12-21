@@ -12,7 +12,7 @@ asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 app = Sanic()
 
-
+#main functionality add and get names 
 @app.route('/', methods=['GET'])
 async def handle_request(request):
     return response.text(messagehub.handleGet())
@@ -20,6 +20,8 @@ async def handle_request(request):
 @app.route('/add/<name>', methods=['GET'])
 async def handle_request(request, name):
     return response.text(messagehub.handleAdd(name))
+
+
 
 @app.route('/rage/add/<name>', methods=['GET'])
 async def handle_request(request, name):
@@ -45,6 +47,26 @@ async def handle_request(request):
 async def handle_request(request):
     return response.text(messagehub.handleGetAnimals())
 
+@app.route('/new_animals/add/', methods=['POST'])
+async def handle_request(request):
+    return response.text(messagehub.handleAddNewAnimals(str(request.body, "utf-8")))
+
+@app.route('/new_animals/get/', methods=['GET'])
+async def handle_request(request):
+    return response.text(messagehub.handleGetNewAnimals())
+
+
+
+@app.route('/startbot/<channel>', methods=['GET'])
+async def handle_request(request, channel):
+    return response.text(messagehub.handleStartBot(channel))
+
+
+
+
+
+
+#clear all names - should hardly be in use, since name list has limited size and is kept up to date
 @app.route('/clear/123', methods=['GET'])
 async def handle_request(request):
     return response.text(messagehub.handleClear())

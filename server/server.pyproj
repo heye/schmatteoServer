@@ -21,6 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="bot.py" />
     <Compile Include="file_storage.py">
       <SubType>Code</SubType>
     </Compile>

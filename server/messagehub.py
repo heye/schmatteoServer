@@ -16,6 +16,9 @@ class cache:
     
     nuzzle_ret = ""
     nuzzle_names = []
+    
+    new_animals_ret = ""
+    new_animals_names = []
 
 
 def setup():
@@ -100,9 +103,11 @@ def handleGetNuzzle() -> str:
 
 
 def handleSetAnimals(animals: str) -> str:
+    new_animals_names = []
     for one_name in animals.splitlines():
-        if one_name not in cache.animal_names:
-            cache.animal_names.append(one_name)
+        new_animals_names.append(one_name)
+
+    cache.animal_names = new_animals_names
     
     return "set"
 
@@ -115,6 +120,22 @@ def handleGetAnimals() -> str:
     return cache.animal_names_ret
 
 
+def handleAddNewAnimals(animals: str) -> str:
+    if name not in cache.new_animals_names:
+        cache.new_animals_names.append(name)        
+        cache.new_animals_ret += name + '\n'
+        return "added"
+
+    return "already_exists"
+
+
+def handleGetNewAnimals() -> str:
+    temp = cache.new_animals_ret
+    cache.new_animals_ret = ""
+    cache.new_animals_names = []
+    return temp
+
+
 def handleClear() -> str:
     cache.ret = ""
     cache.names = []
@@ -122,3 +143,9 @@ def handleClear() -> str:
     cache.rage_names = []
     file_storage.write_file("")
     return "cleared"
+
+
+def handleStartBot(name: str) -> str:
+
+
+    return "starting"
